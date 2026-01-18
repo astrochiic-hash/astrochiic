@@ -28,7 +28,7 @@ const Index = () => {
           <img 
             src="./4c55c15c-6d47-4b31-b910-b68c92218597.png" 
             alt="Astrochic - Astrología Evolutiva" 
-            className="h-12 sm:h-14 md:h-16 w-auto"
+            className="h-8 sm:h-11 md:h-14 lg:h-16 w-auto"
           />
           {/* Desktop nav */}
           <a 
