@@ -301,7 +301,7 @@ const Index = () => {
               ]}
               typesLabel="Tipos de informes disponibles"
               ctaText="Solicitar informe"
-              ctaLink="https://buy.stripe.com/bJecMY3pL9bXaX9gVY0ZW05"
+              ctaLink="https://buy.stripe.com/8x2bIU8K5dsdd5hgVY0ZW00"
             />
 
             {/* Sesión Online 60 min - 120€ */}
@@ -670,11 +670,11 @@ const ServiceCard = ({
         <p className="text-[#B8956B] font-medium text-xs sm:text-sm">{subtitle}</p>
       </div>
       
-      <div className="flex items-baseline gap-2 mb-4 sm:mb-6">
+      <div className="flex items-baseline gap-2 sm:gap-3 mb-5 sm:mb-7 mt-1">
         {oldPrice && (
           <span className="text-base sm:text-lg text-[#9A958C] line-through">{oldPrice}</span>
         )}
-        <span className="text-2xl sm:text-3xl font-light text-[#2A2622]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{price}</span>
+        <span className="text-3xl sm:text-4xl md:text-5xl font-semibold text-[#B8956B] tracking-tight" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{price}</span>
       </div>
 
       {features.length > 0 && (
