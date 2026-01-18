@@ -26,9 +26,9 @@ const Index = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#E8E4DE]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <img 
-            src="./7d6dc424-f44b-45fe-aba3-c7e7048af88e.png" 
-            alt="Astrochiic" 
-            className="h-14 sm:h-16 md:h-20 w-auto"
+            src="./4c55c15c-6d47-4b31-b910-b68c92218597.png" 
+            alt="Astrochic - Astrología Evolutiva" 
+            className="h-12 sm:h-14 md:h-16 w-auto"
           />
           {/* Desktop nav */}
           <a 
@@ -467,9 +467,9 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col items-center gap-6 sm:gap-8">
             <img 
-              src="./7d6dc424-f44b-45fe-aba3-c7e7048af88e.png" 
-              alt="Astrochiic" 
-              className="h-14 sm:h-16 w-auto brightness-0 invert opacity-90"
+              src="./4c55c15c-6d47-4b31-b910-b68c92218597.png" 
+              alt="Astrochic - Astrología Evolutiva" 
+              className="h-12 sm:h-14 w-auto brightness-0 invert opacity-90"
             />
             
             {/* Social Media Links */}
