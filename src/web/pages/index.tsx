@@ -40,7 +40,7 @@ const Index = () => {
           {/* Desktop nav */}
           <a 
             href="#servicios"
-            className="hidden md:inline-block px-5 py-2.5 bg-[#3D3832] text-[#FDFBF7] font-medium rounded-full hover:bg-[#2A2622] transition-all"
+            className="hidden md:inline-block px-5 py-2.5 bg-[#A6896B] text-white font-medium rounded-full hover:bg-[#8B7358] transition-all"
           >
             Ver servicios
           </a>
@@ -86,7 +86,7 @@ const Index = () => {
             <a 
               href="#contacto"
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center px-5 py-3 bg-[#3D3832] text-[#FDFBF7] font-medium rounded-full hover:bg-[#2A2622] transition-all"
+              className="block w-full text-center px-5 py-3 bg-[#A6896B] text-white font-medium rounded-full hover:bg-[#8B7358] transition-all"
             >
               Contactar
             </a>
@@ -113,7 +113,7 @@ const Index = () => {
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <a 
                   href="#servicios"
-                  className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-[#3D3832] text-[#FDFBF7] font-medium rounded-full hover:bg-[#2A2622] transition-all text-sm sm:text-base"
+                  className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-[#A6896B] text-white font-medium rounded-full hover:bg-[#8B7358] transition-all text-sm sm:text-base"
                 >
                   Descubre mis servicios
                 </a>
@@ -466,7 +466,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <a 
               href="#servicios"
-              className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-[#3D3832] text-[#FDFBF7] font-medium rounded-full hover:bg-[#2A2622] transition-all text-sm sm:text-base"
+              className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-[#A6896B] text-white font-medium rounded-full hover:bg-[#8B7358] transition-all text-sm sm:text-base"
             >
               Ver servicios
             </a>
@@ -739,7 +739,7 @@ const ServiceCard = ({
         rel="noopener noreferrer"
         className={`inline-flex items-center justify-center w-full px-5 sm:px-6 py-3 sm:py-3.5 font-medium rounded-full transition-all text-sm ${
           isPrimary 
-            ? 'bg-[#3D3832] text-[#FDFBF7] hover:bg-[#2A2622]' 
+            ? 'bg-[#A6896B] text-white hover:bg-[#8B7358]' 
             : 'border border-[#3D3832]/30 text-[#3D3832] hover:bg-[#3D3832]/5'
         }`}
       >
@@ -852,7 +852,7 @@ const ContactForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full px-6 sm:px-8 py-3.5 sm:py-4 bg-[#3D3832] text-[#FDFBF7] font-medium rounded-full hover:bg-[#2A2622] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
+        className="w-full px-6 sm:px-8 py-3.5 sm:py-4 bg-[#A6896B] text-white font-medium rounded-full hover:bg-[#8B7358] transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
       >
         {isSubmitting ? (
           <>
