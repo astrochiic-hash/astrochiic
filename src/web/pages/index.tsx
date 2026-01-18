@@ -1,4 +1,4 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -47,8 +47,8 @@ const Index = () => {
                 <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm">
                   Astrología Evolutiva
                 </p>
-                <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-[#2D2D2D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
-                  Entiende por qué sientes lo que sientes
+                <h1 className="hero-title text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-[#2D2D2D] font-light tracking-tight">
+                  La carta natal es el <span className="italic font-normal">mapa</span> de tu vida
                 </h1>
                 <p className="text-lg md:text-xl text-[#5C5C5C] leading-relaxed max-w-xl">
                   Tu carta natal no te dice lo que va a pasar. Te muestra quién eres, qué necesitas y por qué repites ciertos patrones.
@@ -88,7 +88,7 @@ const Index = () => {
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center space-y-6 mb-16">
             <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm">Mi enfoque</p>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
               Astrología como herramienta de autoconocimiento
             </h2>
           </div>
@@ -110,7 +110,7 @@ const Index = () => {
             ].map((item, i) => (
               <div key={i} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
                 <div className="w-12 h-12 bg-[#8B7355]/10 rounded-full flex items-center justify-center mb-6">
-                  <span className="text-[#8B7355] font-serif text-xl" style={{ fontFamily: "'Cormorant Garamond', serif" }}>{i + 1}</span>
+                  <span className="text-[#8B7355] section-title text-xl">{i + 1}</span>
                 </div>
                 <h3 className="font-medium text-xl text-[#2D2D2D] mb-3">{item.title}</h3>
                 <p className="text-[#5C5C5C] leading-relaxed">{item.description}</p>
@@ -124,7 +124,7 @@ const Index = () => {
       <section className="py-24 fade-section opacity-0 translate-y-8 transition-all duration-700">
         <div className="max-w-5xl mx-auto px-6">
           <div className="text-center space-y-6 mb-16">
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
               ¿Esto es para ti?
             </h2>
           </div>
@@ -188,108 +188,89 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center space-y-6 mb-16">
             <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm">Servicios</p>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
               Elige cómo quieres trabajar
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-6">
-            {/* Informe escrito */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all group">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="font-medium text-xl text-[#2D2D2D] mb-2">Informe Escrito</h3>
-                  <p className="text-[#8B7355] font-medium">Carta natal detallada</p>
-                </div>
-                <span className="text-2xl font-serif text-[#2D2D2D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>50€</span>
-              </div>
-              <p className="text-[#5C5C5C] mb-6 leading-relaxed">
-                Documento completo con el análisis de tu carta natal: personalidad, emociones, relaciones, vocación y ciclos vitales. Perfecto si prefieres leer y reflexionar a tu ritmo.
-              </p>
-              <a 
-                href="https://buy.stripe.com/bJecMY3pL9bXaX9gVY0ZW05"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full px-6 py-3 border-2 border-[#8B7355] text-[#8B7355] font-medium rounded-full hover:bg-[#8B7355] hover:text-white transition-colors"
-              >
-                Solicitar informe
-              </a>
-            </div>
+          <div className="grid lg:grid-cols-2 gap-6">
+            {/* Informe Astrológico Escrito - 50€ */}
+            <ServiceCard
+              title="Informe Astrológico Escrito"
+              subtitle="Basado en la carta natal"
+              price="50€"
+              features={[
+                "Enfocado en bloqueos personales, temas de vida, propósito y crecimiento",
+                "Entregado como PDF claro y fácil de entender"
+              ]}
+              types={[
+                "Carta natal (también infantil)",
+                "Carta dracónica",
+                "Revolución Solar",
+                "Tránsitos astrológicos",
+                "Sinastría de pareja",
+                "Orientación de salud",
+                "Orientación profesional"
+              ]}
+              typesLabel="Tipos de informes disponibles"
+              ctaText="Solicitar informe"
+              ctaLink="https://buy.stripe.com/bJecMY3pL9bXaX9gVY0ZW05"
+            />
 
-            {/* Sesión individual */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all relative overflow-hidden">
-              <div className="absolute top-4 right-4 bg-[#8B7355] text-white text-xs px-3 py-1 rounded-full">
-                Más popular
-              </div>
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="font-medium text-xl text-[#2D2D2D] mb-2">Sesión Individual</h3>
-                  <p className="text-[#8B7355] font-medium">90 minutos en directo</p>
-                </div>
-                <span className="text-2xl font-serif text-[#2D2D2D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>120€</span>
-              </div>
-              <p className="text-[#5C5C5C] mb-6 leading-relaxed">
-                Sesión en vídeo donde exploramos juntas tu carta natal. Puedo resolver tus dudas en tiempo real y profundizar en las áreas que más te interesen o preocupen.
-              </p>
-              <a 
-                href="https://buy.stripe.com/5kQ7sE5xTewh7KX6hk0ZW01"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full px-6 py-3 bg-[#8B7355] text-white font-medium rounded-full hover:bg-[#7A6349] transition-colors"
-              >
-                Reservar sesión
-              </a>
-            </div>
+            {/* Sesión Online 60 min - 120€ */}
+            <ServiceCard
+              title="Sesión Online"
+              subtitle="Videollamada en directo de 60 minutos"
+              price="120€"
+              badge="Más popular"
+              badgeColor="bg-[#8B7355]"
+              features={[
+                "Espacio para preguntas y claridad",
+                "Incluye grabación de la sesión",
+                "Incluye informe astrológico escrito"
+              ]}
+              ctaText="Reservar sesión"
+              ctaLink="https://buy.stripe.com/5kQ7sE5xTewh7KX6hk0ZW01"
+              isPrimary
+            />
 
-            {/* Pack informe + sesión */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all group">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="font-medium text-xl text-[#2D2D2D] mb-2">Pack Informe + Seguimiento</h3>
-                  <p className="text-[#8B7355] font-medium">Informe + sesión corta</p>
-                </div>
-                <span className="text-2xl font-serif text-[#2D2D2D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>70€</span>
-              </div>
-              <p className="text-[#5C5C5C] mb-6 leading-relaxed">
-                Recibes primero el informe escrito para leerlo con calma, y después agendamos una sesión breve para resolver dudas y profundizar en lo que más te resuene.
-              </p>
-              <a 
-                href="https://buy.stripe.com/bJecMY3pL9bXaX9gVY0ZW05"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full px-6 py-3 border-2 border-[#8B7355] text-[#8B7355] font-medium rounded-full hover:bg-[#8B7355] hover:text-white transition-colors"
-              >
-                Elegir pack
-              </a>
-            </div>
+            {/* Pack de 2 Informes - 70€ */}
+            <ServiceCard
+              title="Pack de 2 Informes Escritos"
+              subtitle="Dos análisis complementarios"
+              price="70€"
+              features={[]}
+              packs={[
+                "Carta Natal + Carta Dracónica",
+                "Carta Natal + Revolución Solar"
+              ]}
+              packsLabel="Opciones de packs"
+              ctaText="Elegir pack"
+              ctaLink="https://buy.stripe.com/bJecMY3pL9bXaX9gVY0ZW05"
+            />
 
-            {/* Sesión 2 cartas */}
-            <div className="bg-gradient-to-br from-[#F9F6F2] to-[#F5EFE8] p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all relative overflow-hidden border border-[#E8E0D5]">
-              <div className="absolute top-4 right-4 bg-[#6B8E6B] text-white text-xs px-3 py-1 rounded-full">
-                Precio especial
-              </div>
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="font-medium text-xl text-[#2D2D2D] mb-2">Sesión 2 Cartas</h3>
-                  <p className="text-[#8B7355] font-medium">Sinastría de pareja o familia</p>
-                </div>
-                <div className="text-right">
-                  <span className="text-lg text-[#9E9E9E] line-through block">170€</span>
-                  <span className="text-2xl font-serif text-[#2D2D2D]" style={{ fontFamily: "'Cormorant Garamond', serif" }}>150€</span>
-                </div>
-              </div>
-              <p className="text-[#5C5C5C] mb-6 leading-relaxed">
-                Analizamos la compatibilidad y dinámica entre dos cartas. Ideal para parejas, relaciones padres-hijos o cualquier vínculo significativo que quieras comprender mejor.
-              </p>
-              <a 
-                href="https://buy.stripe.com/5kQ7sE8K53RDd5hfRU0ZW06"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center w-full px-6 py-3 bg-[#8B7355] text-white font-medium rounded-full hover:bg-[#7A6349] transition-colors"
-              >
-                Reservar sinastría
-              </a>
-            </div>
+            {/* Sesión Online de Dos Cartas - 150€ */}
+            <ServiceCard
+              title="Sesión Online de Dos Cartas"
+              subtitle="Videollamada en directo de 90 minutos"
+              price="150€"
+              oldPrice="170€"
+              badge="Precio especial de lanzamiento"
+              badgeColor="bg-[#6B8E6B]"
+              features={[
+                "Espacio para preguntas y claridad",
+                "Incluye grabación de la sesión",
+                "Incluye informe astrológico escrito"
+              ]}
+              packs={[
+                "Carta natal + Carta dracónica",
+                "Carta natal + Revolución solar"
+              ]}
+              packsLabel="Opciones de cartas"
+              ctaText="Reservar sesión"
+              ctaLink="https://buy.stripe.com/5kQ7sE8K53RDd5hfRU0ZW06"
+              isPrimary
+            />
           </div>
         </div>
       </section>
@@ -298,7 +279,7 @@ const Index = () => {
       <section className="py-24 fade-section opacity-0 translate-y-8 transition-all duration-700">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm mb-6">Mi compromiso</p>
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D] mb-8" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D] mb-8">
             Honestidad por encima de todo
           </h2>
           <p className="text-lg text-[#5C5C5C] leading-relaxed mb-12 max-w-2xl mx-auto">
@@ -323,7 +304,7 @@ const Index = () => {
       {/* CTA Final */}
       <section className="py-24 bg-[#3D3D3D] fade-section opacity-0 translate-y-8 transition-all duration-700">
         <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-white mb-6" style={{ fontFamily: "'Cormorant Garamond', serif" }}>
+          <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-white mb-6">
             ¿Lista para conocerte mejor?
           </h2>
           <p className="text-lg text-[#B8B8B8] mb-10 max-w-xl mx-auto">
@@ -363,7 +344,16 @@ const Index = () => {
       </footer>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300;1,9..40,400;1,9..40,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap');
+        
+        .hero-title {
+          font-family: 'DM Sans', sans-serif;
+        }
+        
+        .section-title {
+          font-family: 'Playfair Display', serif;
+          font-weight: 400;
+        }
         
         .animate-fade-up {
           animation: fadeUp 0.8s ease-out forwards;
@@ -389,6 +379,133 @@ const Index = () => {
           transform: translateY(0) !important;
         }
       `}</style>
+    </div>
+  );
+};
+
+interface ServiceCardProps {
+  title: string;
+  subtitle: string;
+  price: string;
+  oldPrice?: string;
+  badge?: string;
+  badgeColor?: string;
+  features: string[];
+  types?: string[];
+  typesLabel?: string;
+  packs?: string[];
+  packsLabel?: string;
+  ctaText: string;
+  ctaLink: string;
+  isPrimary?: boolean;
+}
+
+const ServiceCard = ({
+  title,
+  subtitle,
+  price,
+  oldPrice,
+  badge,
+  badgeColor,
+  features,
+  types,
+  typesLabel,
+  packs,
+  packsLabel,
+  ctaText,
+  ctaLink,
+  isPrimary
+}: ServiceCardProps) => {
+  const [showTypes, setShowTypes] = useState(false);
+
+  return (
+    <div className={`${oldPrice ? 'bg-gradient-to-br from-[#F9F6F2] to-[#F5EFE8] border border-[#E8E0D5]' : 'bg-white'} p-7 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all relative overflow-hidden`}>
+      {badge && (
+        <div className={`absolute top-4 right-4 ${badgeColor} text-white text-xs px-3 py-1 rounded-full font-medium`}>
+          {badge}
+        </div>
+      )}
+      
+      <div className="mb-6">
+        <h3 className="font-medium text-xl text-[#2D2D2D] mb-1 pr-24">{title}</h3>
+        <p className="text-[#8B7355] font-medium text-sm">{subtitle}</p>
+      </div>
+      
+      <div className="flex items-baseline gap-2 mb-6">
+        {oldPrice && (
+          <span className="text-lg text-[#9E9E9E] line-through">{oldPrice}</span>
+        )}
+        <span className="text-3xl font-light text-[#2D2D2D]" style={{ fontFamily: "'Playfair Display', serif" }}>{price}</span>
+      </div>
+
+      {features.length > 0 && (
+        <ul className="space-y-2.5 mb-6">
+          {features.map((feature, i) => (
+            <li key={i} className="flex items-start gap-2.5 text-[#5C5C5C] text-sm">
+              <svg className="w-4 h-4 text-[#8B7355] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              {feature}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {types && (
+        <div className="mb-6">
+          <button
+            onClick={() => setShowTypes(!showTypes)}
+            className="flex items-center gap-2 text-sm font-medium text-[#8B7355] hover:text-[#7A6349] transition-colors"
+          >
+            <svg 
+              className={`w-4 h-4 transition-transform ${showTypes ? 'rotate-180' : ''}`} 
+              fill="none" 
+              stroke="currentColor" 
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+            {typesLabel}
+          </button>
+          {showTypes && (
+            <ul className="mt-3 ml-6 space-y-1.5">
+              {types.map((type, i) => (
+                <li key={i} className="text-sm text-[#5C5C5C] flex items-center gap-2">
+                  <span className="w-1.5 h-1.5 bg-[#8B7355]/50 rounded-full"></span>
+                  {type}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      )}
+
+      {packs && (
+        <div className="mb-6 p-4 bg-[#FAF8F5] rounded-xl">
+          <p className="text-xs font-medium text-[#8B7355] uppercase tracking-wide mb-3">{packsLabel}</p>
+          <ul className="space-y-2">
+            {packs.map((pack, i) => (
+              <li key={i} className="text-sm text-[#5C5C5C] flex items-center gap-2">
+                <span className="w-1.5 h-1.5 bg-[#8B7355] rounded-full"></span>
+                {pack}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
+      <a 
+        href={ctaLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        className={`inline-flex items-center justify-center w-full px-6 py-3.5 font-medium rounded-full transition-colors ${
+          isPrimary 
+            ? 'bg-[#8B7355] text-white hover:bg-[#7A6349]' 
+            : 'border-2 border-[#8B7355] text-[#8B7355] hover:bg-[#8B7355] hover:text-white'
+        }`}
+      >
+        {ctaText}
+      </a>
     </div>
   );
 };
