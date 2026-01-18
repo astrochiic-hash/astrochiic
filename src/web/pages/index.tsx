@@ -665,8 +665,8 @@ const ServiceCard = ({
         </div>
       )}
       
-      <div className="mb-4 sm:mb-6">
-        <h3 className="font-medium text-lg sm:text-xl text-[#2A2622] mb-1 pr-20 sm:pr-24">{title}</h3>
+      <div className="mb-5 sm:mb-7">
+        <h3 className="font-semibold text-xl sm:text-2xl md:text-[1.65rem] text-[#2A2622] mb-2 pr-20 sm:pr-24 leading-tight tracking-tight">{title}</h3>
         <p className="text-[#B8956B] font-medium text-xs sm:text-sm">{subtitle}</p>
       </div>
       
