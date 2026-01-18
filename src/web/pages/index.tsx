@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 
 const Index = () => {
   const heroRef = useRef<HTMLDivElement>(null);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -23,47 +24,95 @@ const Index = () => {
     <div className="min-h-screen bg-[#FAF8F5] text-[#3D3D3D]">
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FAF8F5]/90 backdrop-blur-md border-b border-[#E8E4DE]">
-        <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <img 
             src="./7d6dc424-f44b-45fe-aba3-c7e7048af88e.png" 
             alt="Astrochiic" 
-            className="h-10 md:h-12 w-auto"
+            className="h-14 sm:h-16 md:h-20 w-auto"
           />
+          {/* Desktop nav */}
           <a 
             href="#servicios"
             className="hidden md:inline-block px-5 py-2.5 bg-[#8B7355] text-white font-medium rounded-full hover:bg-[#7A6349] transition-colors"
           >
             Ver servicios
           </a>
+          {/* Mobile hamburger */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-[#E8E4DE]/50 transition-colors"
+            aria-label="Menú"
+          >
+            <svg className="w-6 h-6 text-[#3D3D3D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              {mobileMenuOpen ? (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              ) : (
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              )}
+            </svg>
+          </button>
         </div>
+        {/* Mobile menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-[#FAF8F5] border-t border-[#E8E4DE] px-4 py-4 space-y-3 animate-fade-down">
+            <a 
+              href="#enfoque"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 text-[#5C5C5C] hover:text-[#8B7355] transition-colors"
+            >
+              Mi enfoque
+            </a>
+            <a 
+              href="#servicios"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 text-[#5C5C5C] hover:text-[#8B7355] transition-colors"
+            >
+              Servicios
+            </a>
+            <a 
+              href="#testimonios"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block py-2 text-[#5C5C5C] hover:text-[#8B7355] transition-colors"
+            >
+              Testimonios
+            </a>
+            <a 
+              href="#contacto"
+              onClick={() => setMobileMenuOpen(false)}
+              className="block w-full text-center px-5 py-3 bg-[#8B7355] text-white font-medium rounded-full hover:bg-[#7A6349] transition-colors"
+            >
+              Contactar
+            </a>
+          </div>
+        )}
       </nav>
 
       {/* Hero Section */}
-      <section ref={heroRef} className="min-h-screen flex items-center pt-20 pb-16">
-        <div className="max-w-6xl mx-auto px-6 w-full">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            <div className="order-2 lg:order-1 space-y-8 animate-fade-up">
-              <div className="space-y-6">
-                <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm">
+      <section ref={heroRef} className="min-h-screen flex items-center pt-24 sm:pt-20 pb-12 sm:pb-16">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 w-full">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            <div className="order-2 lg:order-1 space-y-6 sm:space-y-8 animate-fade-up text-center lg:text-left">
+              <div className="space-y-4 sm:space-y-6">
+                <p className="text-[#8B7355] font-medium tracking-widest uppercase text-xs sm:text-sm">
                   Astrología Evolutiva
                 </p>
-                <h1 className="hero-title text-4xl md:text-5xl lg:text-6xl leading-[1.05] text-[#2D2D2D] font-light tracking-tight">
+                <h1 className="hero-title text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-[1.1] text-[#2D2D2D] font-light tracking-tight">
                   La carta natal es el <span className="italic font-normal">mapa</span> de tu vida
                 </h1>
-                <p className="text-lg md:text-xl text-[#5C5C5C] leading-relaxed max-w-xl">
+                <p className="text-base sm:text-lg md:text-xl text-[#5C5C5C] leading-relaxed max-w-xl mx-auto lg:mx-0">
                   Tu carta natal no te dice lo que va a pasar. Te muestra quién eres, qué necesitas y por qué repites ciertos patrones.
                 </p>
               </div>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
                 <a 
                   href="#servicios"
-                  className="inline-flex items-center justify-center px-8 py-4 bg-[#8B7355] text-white font-medium rounded-full hover:bg-[#7A6349] transition-all hover:shadow-lg"
+                  className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-[#8B7355] text-white font-medium rounded-full hover:bg-[#7A6349] transition-all hover:shadow-lg text-sm sm:text-base"
                 >
                   Descubre mis servicios
                 </a>
                 <a 
                   href="#enfoque"
-                  className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#8B7355] text-[#8B7355] font-medium rounded-full hover:bg-[#8B7355]/5 transition-colors"
+                  className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 border-2 border-[#8B7355] text-[#8B7355] font-medium rounded-full hover:bg-[#8B7355]/5 transition-colors text-sm sm:text-base"
                 >
                   Conoce mi enfoque
                 </a>
@@ -75,7 +124,7 @@ const Index = () => {
                 <img 
                   src="./0a8590cc-7ac8-4dc7-8454-e879f7fdfbbe.png" 
                   alt="Astrochiic - Astrología Evolutiva"
-                  className="relative w-72 md:w-80 lg:w-96 rounded-[1.5rem] shadow-2xl"
+                  className="relative w-56 sm:w-72 md:w-80 lg:w-96 rounded-[1.5rem] shadow-2xl"
                 />
               </div>
             </div>
@@ -84,16 +133,16 @@ const Index = () => {
       </section>
 
       {/* Enfoque Section */}
-      <section id="enfoque" className="py-24 bg-[#F5F1EC] fade-section opacity-0 translate-y-8 transition-all duration-700">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center space-y-6 mb-16">
-            <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm">Mi enfoque</p>
-            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
+      <section id="enfoque" className="py-16 sm:py-24 bg-[#F5F1EC] fade-section opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
+            <p className="text-[#8B7355] font-medium tracking-widest uppercase text-xs sm:text-sm">Mi enfoque</p>
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
               Astrología como herramienta de autoconocimiento
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
             {[
               {
                 title: "Sin predicciones vacías",
@@ -108,92 +157,103 @@ const Index = () => {
                 description: "Cada sesión te da claves concretas para entender tus relaciones, tu vocación y tus ciclos emocionales."
               }
             ].map((item, i) => (
-              <div key={i} className="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                <div className="w-12 h-12 bg-[#8B7355]/10 rounded-full flex items-center justify-center mb-6">
-                  <span className="text-[#8B7355] section-title text-xl">{i + 1}</span>
+              <div key={i} className="bg-white p-6 sm:p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
+                <div className="w-10 sm:w-12 h-10 sm:h-12 bg-[#8B7355]/10 rounded-full flex items-center justify-center mb-4 sm:mb-6">
+                  <span className="text-[#8B7355] section-title text-lg sm:text-xl">{i + 1}</span>
                 </div>
-                <h3 className="font-medium text-xl text-[#2D2D2D] mb-3">{item.title}</h3>
-                <p className="text-[#5C5C5C] leading-relaxed">{item.description}</p>
+                <h3 className="font-medium text-lg sm:text-xl text-[#2D2D2D] mb-2 sm:mb-3">{item.title}</h3>
+                <p className="text-[#5C5C5C] leading-relaxed text-sm sm:text-base">{item.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Para quién es / No es */}
-      <section className="py-24 fade-section opacity-0 translate-y-8 transition-all duration-700">
-        <div className="max-w-5xl mx-auto px-6">
-          <div className="text-center space-y-6 mb-16">
-            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
-              ¿Esto es para ti?
+      {/* Para quién es / No es - REDESIGNED */}
+      <section className="py-16 sm:py-24 fade-section opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
+            <p className="text-[#8B7355] font-medium tracking-widest uppercase text-xs sm:text-sm">¿Es para ti?</p>
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
+              Descubre si encajamos
             </h2>
           </div>
           
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12">
-            <div className="space-y-6">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 bg-[#6B8E6B]/10 rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-[#6B8E6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+            {/* SÍ es para ti */}
+            <div className="bg-gradient-to-br from-[#E8F2E8] to-[#F2F7F2] p-6 sm:p-8 rounded-2xl border border-[#C5DBC5]/50">
+              <div className="flex items-center gap-3 mb-6 sm:mb-8">
+                <div className="w-12 h-12 bg-[#6B8E6B] rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h3 className="font-medium text-xl text-[#2D2D2D]">Es para ti si...</h3>
+                <h3 className="font-semibold text-xl sm:text-2xl text-[#2D2D2D]">Sí es para ti</h3>
               </div>
-              <ul className="space-y-4">
+              <div className="space-y-4">
                 {[
-                  "Quieres entenderte mejor, no que te digan qué hacer",
-                  "Buscas una mirada profunda, no un horóscopo",
-                  "Estás en un momento de cambio o transición vital",
-                  "Te interesa el por qué detrás de tus patrones",
-                  "Valoras el autoconocimiento como camino de crecimiento"
+                  "Estás en un momento de cambio o crisis",
+                  "Quieres entender tus patrones emocionales",
+                  "Buscas autoconocimiento profundo",
+                  "Te interesa crecer, no que te digan qué hacer",
+                  "Valoras una mirada honesta y sin juicio"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-[#5C5C5C]">
-                    <span className="text-[#6B8E6B] mt-1">✓</span>
-                    {item}
-                  </li>
+                  <div key={i} className="flex items-start gap-3 group">
+                    <div className="w-6 h-6 rounded-full bg-[#6B8E6B]/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#6B8E6B]/30 transition-colors">
+                      <svg className="w-4 h-4 text-[#6B8E6B]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-[#3D3D3D] text-sm sm:text-base">{item}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
             
-            <div className="space-y-6">
-              <div className="flex items-center gap-3 mb-8">
-                <div className="w-10 h-10 bg-[#C9A485]/20 rounded-full flex items-center justify-center">
-                  <svg className="w-5 h-5 text-[#9E7B5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            {/* NO es para ti */}
+            <div className="bg-gradient-to-br from-[#F7F0EB] to-[#FBF7F4] p-6 sm:p-8 rounded-2xl border border-[#E0D5CC]/50">
+              <div className="flex items-center gap-3 mb-6 sm:mb-8">
+                <div className="w-12 h-12 bg-[#C9A485] rounded-full flex items-center justify-center">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </div>
-                <h3 className="font-medium text-xl text-[#2D2D2D]">No es para ti si...</h3>
+                <h3 className="font-semibold text-xl sm:text-2xl text-[#2D2D2D]">No es para ti</h3>
               </div>
-              <ul className="space-y-4">
+              <div className="space-y-4">
                 {[
-                  "Buscas predicciones sobre el futuro",
-                  "Quieres respuestas rápidas y superficiales",
-                  "Esperas que te digan qué decisión tomar",
-                  "Prefieres lo místico sin base psicológica",
-                  "No estás dispuesta/o a mirarte con honestidad"
+                  "Buscas predicciones del futuro",
+                  "Quieres respuestas mágicas sin trabajo personal",
+                  "Esperas que te diga qué hacer",
+                  "Prefieres lo superficial y rápido",
+                  "No estás lista/o para mirarte con honestidad"
                 ].map((item, i) => (
-                  <li key={i} className="flex items-start gap-3 text-[#5C5C5C]">
-                    <span className="text-[#9E7B5E] mt-1">✗</span>
-                    {item}
-                  </li>
+                  <div key={i} className="flex items-start gap-3 group">
+                    <div className="w-6 h-6 rounded-full bg-[#C9A485]/20 flex items-center justify-center flex-shrink-0 mt-0.5 group-hover:bg-[#C9A485]/30 transition-colors">
+                      <svg className="w-4 h-4 text-[#9E7B5E]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </div>
+                    <span className="text-[#3D3D3D] text-sm sm:text-base">{item}</span>
+                  </div>
                 ))}
-              </ul>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Servicios */}
-      <section id="servicios" className="py-24 bg-[#F5F1EC] fade-section opacity-0 translate-y-8 transition-all duration-700">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="text-center space-y-6 mb-16">
-            <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm">Servicios</p>
-            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
+      <section id="servicios" className="py-16 sm:py-24 bg-[#F5F1EC] fade-section opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
+            <p className="text-[#8B7355] font-medium tracking-widest uppercase text-xs sm:text-sm">Servicios</p>
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
               Elige cómo quieres trabajar
             </h2>
           </div>
           
-          <div className="grid lg:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-5 sm:gap-6">
             {/* Informe Astrológico Escrito - 50€ */}
             <ServiceCard
               title="Informe Astrológico Escrito"
@@ -275,24 +335,82 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Testimonios */}
+      <section id="testimonios" className="py-16 sm:py-24 fade-section opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6">
+          <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
+            <p className="text-[#8B7355] font-medium tracking-widest uppercase text-xs sm:text-sm">Experiencias</p>
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
+              Lo que dicen quienes han trabajado conmigo
+            </h2>
+          </div>
+          
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[
+              {
+                text: "Llevaba años sintiéndome atrapada en las mismas dinámicas de pareja sin entender por qué. La sesión con ella me dio una claridad que ninguna terapia me había dado antes. Ahora entiendo mis patrones y puedo elegir conscientemente.",
+                name: "Laura M.",
+                context: "Sesión de carta natal"
+              },
+              {
+                text: "No creía mucho en la astrología hasta que vi mi carta explicada con ese enfoque psicológico. No me dijo qué iba a pasar, sino quién soy y por qué reacciono como reacciono. Muy revelador y nada esotérico.",
+                name: "Marta S.",
+                context: "Informe escrito"
+              },
+              {
+                text: "Estaba en un momento de crisis laboral total, sin saber qué camino tomar. El informe de orientación profesional me ayudó a ver mis fortalezas reales y a dejar de forzarme hacia lugares que no eran para mí.",
+                name: "Carolina G.",
+                context: "Orientación profesional"
+              },
+              {
+                text: "Lo que más valoro es su honestidad. No te dice lo que quieres escuchar, te dice lo que necesitas saber. Después de la sesión me sentí más en paz conmigo misma y con mis decisiones.",
+                name: "Ana P.",
+                context: "Sesión online"
+              }
+            ].map((testimonial, i) => (
+              <div 
+                key={i} 
+                className={`bg-white p-6 sm:p-8 rounded-2xl shadow-sm border border-[#E8E4DE]/50 hover:shadow-md transition-all ${i === 3 ? 'sm:col-span-2 lg:col-span-1' : ''}`}
+              >
+                <svg className="w-8 h-8 text-[#D4C4B0] mb-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                </svg>
+                <p className="text-[#5C5C5C] leading-relaxed mb-6 text-sm sm:text-base italic">
+                  "{testimonial.text}"
+                </p>
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 bg-gradient-to-br from-[#D4C4B0] to-[#8B7355] rounded-full flex items-center justify-center">
+                    <span className="text-white font-medium text-sm">{testimonial.name.charAt(0)}</span>
+                  </div>
+                  <div>
+                    <p className="font-medium text-[#2D2D2D] text-sm">{testimonial.name}</p>
+                    <p className="text-[#8B7355] text-xs">{testimonial.context}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Valores / Confianza */}
-      <section className="py-24 fade-section opacity-0 translate-y-8 transition-all duration-700">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm mb-6">Mi compromiso</p>
-          <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D] mb-8">
+      <section className="py-16 sm:py-24 bg-[#F5F1EC] fade-section opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <p className="text-[#8B7355] font-medium tracking-widest uppercase text-xs sm:text-sm mb-4 sm:mb-6">Mi compromiso</p>
+          <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D] mb-6 sm:mb-8">
             Honestidad por encima de todo
           </h2>
-          <p className="text-lg text-[#5C5C5C] leading-relaxed mb-12 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-[#5C5C5C] leading-relaxed mb-10 sm:mb-12 max-w-2xl mx-auto">
             No vendo magia ni promesas vacías. La astrología es una herramienta poderosa de autoconocimiento cuando se usa con rigor y respeto. Mi trabajo es acompañarte a verte con más claridad, no darte falsas certezas.
           </p>
           
-          <div className="grid md:grid-cols-3 gap-8 text-left">
+          <div className="grid sm:grid-cols-3 gap-6 sm:gap-8 text-left">
             {[
               { title: "Confidencialidad total", desc: "Todo lo que compartas conmigo queda entre nosotras. Tu carta y tu historia están a salvo." },
               { title: "Sin juicio", desc: "La carta natal no tiene partes 'malas'. Cada aspecto tiene su luz y su sombra." },
               { title: "Enfoque humano", desc: "No eres un conjunto de aspectos astrológicos. Eres una persona compleja y única." }
             ].map((item, i) => (
-              <div key={i} className="space-y-3">
+              <div key={i} className="space-y-2 sm:space-y-3">
                 <h3 className="font-medium text-[#2D2D2D]">{item.title}</h3>
                 <p className="text-[#5C5C5C] text-sm leading-relaxed">{item.desc}</p>
               </div>
@@ -302,24 +420,24 @@ const Index = () => {
       </section>
 
       {/* CTA Final */}
-      <section className="py-24 bg-[#3D3D3D] fade-section opacity-0 translate-y-8 transition-all duration-700">
-        <div className="max-w-3xl mx-auto px-6 text-center">
-          <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-white mb-6">
+      <section className="py-16 sm:py-24 bg-[#3D3D3D] fade-section opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white mb-4 sm:mb-6">
             ¿Lista para conocerte mejor?
           </h2>
-          <p className="text-lg text-[#B8B8B8] mb-10 max-w-xl mx-auto">
+          <p className="text-base sm:text-lg text-[#B8B8B8] mb-8 sm:mb-10 max-w-xl mx-auto">
             El primer paso hacia el autoconocimiento es atreverte a mirar. Tu carta natal tiene mucho que contarte.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center">
             <a 
               href="#servicios"
-              className="inline-flex items-center justify-center px-8 py-4 bg-[#D4C4B0] text-[#2D2D2D] font-medium rounded-full hover:bg-[#C9B89F] transition-colors"
+              className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 bg-[#D4C4B0] text-[#2D2D2D] font-medium rounded-full hover:bg-[#C9B89F] transition-colors text-sm sm:text-base"
             >
               Ver servicios
             </a>
             <a 
               href="#contacto"
-              className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#D4C4B0] text-[#D4C4B0] font-medium rounded-full hover:bg-[#D4C4B0]/10 transition-colors"
+              className="inline-flex items-center justify-center px-6 sm:px-8 py-3.5 sm:py-4 border-2 border-[#D4C4B0] text-[#D4C4B0] font-medium rounded-full hover:bg-[#D4C4B0]/10 transition-colors text-sm sm:text-base"
             >
               Escríbeme
             </a>
@@ -328,14 +446,14 @@ const Index = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section id="contacto" className="py-24 bg-[#FAF8F5] fade-section opacity-0 translate-y-8 transition-all duration-700">
-        <div className="max-w-2xl mx-auto px-6">
-          <div className="text-center space-y-6 mb-12">
-            <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm">Contacto</p>
-            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
+      <section id="contacto" className="py-16 sm:py-24 bg-[#FAF8F5] fade-section opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-2xl mx-auto px-4 sm:px-6">
+          <div className="text-center space-y-4 sm:space-y-6 mb-10 sm:mb-12">
+            <p className="text-[#8B7355] font-medium tracking-widest uppercase text-xs sm:text-sm">Contacto</p>
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
               ¿Tienes alguna pregunta?
             </h2>
-            <p className="text-[#5C5C5C] leading-relaxed max-w-md mx-auto">
+            <p className="text-[#5C5C5C] leading-relaxed max-w-md mx-auto text-sm sm:text-base">
               Si tienes dudas sobre los servicios o necesitas más información, escríbeme y te responderé lo antes posible.
             </p>
           </div>
@@ -345,25 +463,25 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-16 bg-[#2D2D2D]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col items-center gap-8">
+      <footer className="py-12 sm:py-16 bg-[#2D2D2D]">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col items-center gap-6 sm:gap-8">
             <img 
               src="./7d6dc424-f44b-45fe-aba3-c7e7048af88e.png" 
               alt="Astrochiic" 
-              className="h-12 w-auto brightness-0 invert opacity-90"
+              className="h-14 sm:h-16 w-auto brightness-0 invert opacity-90"
             />
             
             {/* Social Media Links */}
-            <div className="flex items-center gap-5">
+            <div className="flex items-center gap-4 sm:gap-5">
               <a 
                 href="https://instagram.com/astrochiic" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-11 h-11 bg-[#3D3D3D] rounded-full flex items-center justify-center hover:bg-[#4D4D4D] transition-colors group"
+                className="w-10 sm:w-11 h-10 sm:h-11 bg-[#3D3D3D] rounded-full flex items-center justify-center hover:bg-[#4D4D4D] transition-colors group"
                 aria-label="Instagram"
               >
-                <svg className="w-5 h-5 text-[#D4C4B0] group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 sm:w-5 h-4 sm:h-5 text-[#D4C4B0] group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
                 </svg>
               </a>
@@ -371,10 +489,10 @@ const Index = () => {
                 href="https://tiktok.com/@astrochiic" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-11 h-11 bg-[#3D3D3D] rounded-full flex items-center justify-center hover:bg-[#4D4D4D] transition-colors group"
+                className="w-10 sm:w-11 h-10 sm:h-11 bg-[#3D3D3D] rounded-full flex items-center justify-center hover:bg-[#4D4D4D] transition-colors group"
                 aria-label="TikTok"
               >
-                <svg className="w-5 h-5 text-[#D4C4B0] group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 sm:w-5 h-4 sm:h-5 text-[#D4C4B0] group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.33 6.33 0 005 20.1a6.34 6.34 0 0010.86-4.43v-7a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z"/>
                 </svg>
               </a>
@@ -382,10 +500,10 @@ const Index = () => {
                 href="https://youtube.com/@astrochiic" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                className="w-11 h-11 bg-[#3D3D3D] rounded-full flex items-center justify-center hover:bg-[#4D4D4D] transition-colors group"
+                className="w-10 sm:w-11 h-10 sm:h-11 bg-[#3D3D3D] rounded-full flex items-center justify-center hover:bg-[#4D4D4D] transition-colors group"
                 aria-label="YouTube"
               >
-                <svg className="w-5 h-5 text-[#D4C4B0] group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 sm:w-5 h-4 sm:h-5 text-[#D4C4B0] group-hover:text-white transition-colors" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
                 </svg>
               </a>
@@ -402,7 +520,7 @@ const Index = () => {
             {/* Divider */}
             <div className="w-24 h-px bg-[#4D4D4D]"></div>
             
-            <p className="text-[#9E9E9E] text-sm">
+            <p className="text-[#9E9E9E] text-xs sm:text-sm text-center">
               © {new Date().getFullYear()} Astrochiic. Astrología Evolutiva.
             </p>
           </div>
@@ -428,11 +546,26 @@ const Index = () => {
         .animation-delay-200 {
           animation-delay: 0.2s;
         }
+
+        .animate-fade-down {
+          animation: fadeDown 0.3s ease-out forwards;
+        }
         
         @keyframes fadeUp {
           from {
             opacity: 0;
             transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeDown {
+          from {
+            opacity: 0;
+            transform: translateY(-10px);
           }
           to {
             opacity: 1;
@@ -485,30 +618,30 @@ const ServiceCard = ({
   const [showTypes, setShowTypes] = useState(false);
 
   return (
-    <div className={`${oldPrice ? 'bg-gradient-to-br from-[#F9F6F2] to-[#F5EFE8] border border-[#E8E0D5]' : 'bg-white'} p-7 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all relative overflow-hidden`}>
+    <div className={`${oldPrice ? 'bg-gradient-to-br from-[#F9F6F2] to-[#F5EFE8] border border-[#E8E0D5]' : 'bg-white'} p-5 sm:p-7 md:p-8 rounded-2xl shadow-sm hover:shadow-lg transition-all relative overflow-hidden`}>
       {badge && (
-        <div className={`absolute top-4 right-4 ${badgeColor} text-white text-xs px-3 py-1 rounded-full font-medium`}>
+        <div className={`absolute top-3 sm:top-4 right-3 sm:right-4 ${badgeColor} text-white text-[10px] sm:text-xs px-2 sm:px-3 py-1 rounded-full font-medium`}>
           {badge}
         </div>
       )}
       
-      <div className="mb-6">
-        <h3 className="font-medium text-xl text-[#2D2D2D] mb-1 pr-24">{title}</h3>
-        <p className="text-[#8B7355] font-medium text-sm">{subtitle}</p>
+      <div className="mb-4 sm:mb-6">
+        <h3 className="font-medium text-lg sm:text-xl text-[#2D2D2D] mb-1 pr-20 sm:pr-24">{title}</h3>
+        <p className="text-[#8B7355] font-medium text-xs sm:text-sm">{subtitle}</p>
       </div>
       
-      <div className="flex items-baseline gap-2 mb-6">
+      <div className="flex items-baseline gap-2 mb-4 sm:mb-6">
         {oldPrice && (
-          <span className="text-lg text-[#9E9E9E] line-through">{oldPrice}</span>
+          <span className="text-base sm:text-lg text-[#9E9E9E] line-through">{oldPrice}</span>
         )}
-        <span className="text-3xl font-light text-[#2D2D2D]" style={{ fontFamily: "'Playfair Display', serif" }}>{price}</span>
+        <span className="text-2xl sm:text-3xl font-light text-[#2D2D2D]" style={{ fontFamily: "'Playfair Display', serif" }}>{price}</span>
       </div>
 
       {features.length > 0 && (
-        <ul className="space-y-2.5 mb-6">
+        <ul className="space-y-2 sm:space-y-2.5 mb-4 sm:mb-6">
           {features.map((feature, i) => (
-            <li key={i} className="flex items-start gap-2.5 text-[#5C5C5C] text-sm">
-              <svg className="w-4 h-4 text-[#8B7355] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li key={i} className="flex items-start gap-2 sm:gap-2.5 text-[#5C5C5C] text-xs sm:text-sm">
+              <svg className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#8B7355] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               {feature}
@@ -518,13 +651,13 @@ const ServiceCard = ({
       )}
 
       {types && (
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <button
             onClick={() => setShowTypes(!showTypes)}
-            className="flex items-center gap-2 text-sm font-medium text-[#8B7355] hover:text-[#7A6349] transition-colors"
+            className="flex items-center gap-2 text-xs sm:text-sm font-medium text-[#8B7355] hover:text-[#7A6349] transition-colors"
           >
             <svg 
-              className={`w-4 h-4 transition-transform ${showTypes ? 'rotate-180' : ''}`} 
+              className={`w-3.5 sm:w-4 h-3.5 sm:h-4 transition-transform ${showTypes ? 'rotate-180' : ''}`} 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -534,10 +667,10 @@ const ServiceCard = ({
             {typesLabel}
           </button>
           {showTypes && (
-            <ul className="mt-3 ml-6 space-y-1.5">
+            <ul className="mt-2 sm:mt-3 ml-5 sm:ml-6 space-y-1 sm:space-y-1.5">
               {types.map((type, i) => (
-                <li key={i} className="text-sm text-[#5C5C5C] flex items-center gap-2">
-                  <span className="w-1.5 h-1.5 bg-[#8B7355]/50 rounded-full"></span>
+                <li key={i} className="text-xs sm:text-sm text-[#5C5C5C] flex items-center gap-2">
+                  <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-[#8B7355]/50 rounded-full"></span>
                   {type}
                 </li>
               ))}
@@ -547,12 +680,12 @@ const ServiceCard = ({
       )}
 
       {packs && (
-        <div className="mb-6 p-4 bg-[#FAF8F5] rounded-xl">
-          <p className="text-xs font-medium text-[#8B7355] uppercase tracking-wide mb-3">{packsLabel}</p>
-          <ul className="space-y-2">
+        <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-[#FAF8F5] rounded-xl">
+          <p className="text-[10px] sm:text-xs font-medium text-[#8B7355] uppercase tracking-wide mb-2 sm:mb-3">{packsLabel}</p>
+          <ul className="space-y-1.5 sm:space-y-2">
             {packs.map((pack, i) => (
-              <li key={i} className="text-sm text-[#5C5C5C] flex items-center gap-2">
-                <span className="w-1.5 h-1.5 bg-[#8B7355] rounded-full"></span>
+              <li key={i} className="text-xs sm:text-sm text-[#5C5C5C] flex items-center gap-2">
+                <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-[#8B7355] rounded-full"></span>
                 {pack}
               </li>
             ))}
@@ -564,7 +697,7 @@ const ServiceCard = ({
         href={ctaLink}
         target="_blank"
         rel="noopener noreferrer"
-        className={`inline-flex items-center justify-center w-full px-6 py-3.5 font-medium rounded-full transition-colors ${
+        className={`inline-flex items-center justify-center w-full px-5 sm:px-6 py-3 sm:py-3.5 font-medium rounded-full transition-colors text-sm ${
           isPrimary 
             ? 'bg-[#8B7355] text-white hover:bg-[#7A6349]' 
             : 'border-2 border-[#8B7355] text-[#8B7355] hover:bg-[#8B7355] hover:text-white'
@@ -605,13 +738,13 @@ const ContactForm = () => {
     }, 1000);
   };
 
-  const inputClasses = "w-full px-5 py-4 bg-white border border-[#E8E4DE] rounded-xl text-[#3D3D3D] placeholder-[#A8A8A8] focus:outline-none focus:border-[#8B7355] focus:ring-2 focus:ring-[#8B7355]/10 transition-all";
+  const inputClasses = "w-full px-4 sm:px-5 py-3 sm:py-4 bg-white border border-[#E8E4DE] rounded-xl text-[#3D3D3D] placeholder-[#A8A8A8] focus:outline-none focus:border-[#8B7355] focus:ring-2 focus:ring-[#8B7355]/10 transition-all text-sm sm:text-base";
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-5">
-      <div className="grid md:grid-cols-2 gap-5">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+      <div className="grid sm:grid-cols-2 gap-4 sm:gap-5">
         <div>
-          <label htmlFor="nombre" className="block text-sm font-medium text-[#5C5C5C] mb-2">
+          <label htmlFor="nombre" className="block text-xs sm:text-sm font-medium text-[#5C5C5C] mb-1.5 sm:mb-2">
             Nombre *
           </label>
           <input
@@ -625,7 +758,7 @@ const ContactForm = () => {
           />
         </div>
         <div>
-          <label htmlFor="email" className="block text-sm font-medium text-[#5C5C5C] mb-2">
+          <label htmlFor="email" className="block text-xs sm:text-sm font-medium text-[#5C5C5C] mb-1.5 sm:mb-2">
             Email *
           </label>
           <input
@@ -641,7 +774,7 @@ const ContactForm = () => {
       </div>
       
       <div>
-        <label htmlFor="asunto" className="block text-sm font-medium text-[#5C5C5C] mb-2">
+        <label htmlFor="asunto" className="block text-xs sm:text-sm font-medium text-[#5C5C5C] mb-1.5 sm:mb-2">
           Asunto <span className="text-[#A8A8A8] font-normal">(opcional)</span>
         </label>
         <select
@@ -662,7 +795,7 @@ const ContactForm = () => {
       </div>
       
       <div>
-        <label htmlFor="mensaje" className="block text-sm font-medium text-[#5C5C5C] mb-2">
+        <label htmlFor="mensaje" className="block text-xs sm:text-sm font-medium text-[#5C5C5C] mb-1.5 sm:mb-2">
           Mensaje *
         </label>
         <textarea
@@ -679,11 +812,11 @@ const ContactForm = () => {
       <button
         type="submit"
         disabled={isSubmitting}
-        className="w-full px-8 py-4 bg-[#8B7355] text-white font-medium rounded-full hover:bg-[#7A6349] transition-all hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+        className="w-full px-6 sm:px-8 py-3.5 sm:py-4 bg-[#8B7355] text-white font-medium rounded-full hover:bg-[#7A6349] transition-all hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2 text-sm sm:text-base"
       >
         {isSubmitting ? (
           <>
-            <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+            <svg className="animate-spin w-4 sm:w-5 h-4 sm:h-5" fill="none" viewBox="0 0 24 24">
               <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
               <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
@@ -691,7 +824,7 @@ const ContactForm = () => {
           </>
         ) : submitted ? (
           <>
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
             </svg>
             ¡Listo!
@@ -699,14 +832,14 @@ const ContactForm = () => {
         ) : (
           <>
             Enviar mensaje
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 sm:w-5 h-4 sm:h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
             </svg>
           </>
         )}
       </button>
       
-      <p className="text-center text-sm text-[#9E9E9E]">
+      <p className="text-center text-xs sm:text-sm text-[#9E9E9E]">
         Al enviar se abrirá tu cliente de correo con el mensaje preparado.
       </p>
     </form>
