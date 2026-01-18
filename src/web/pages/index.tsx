@@ -318,12 +318,29 @@ const Index = () => {
               Ver servicios
             </a>
             <a 
-              href="mailto:astrochiic@gmail.com"
+              href="#contacto"
               className="inline-flex items-center justify-center px-8 py-4 border-2 border-[#D4C4B0] text-[#D4C4B0] font-medium rounded-full hover:bg-[#D4C4B0]/10 transition-colors"
             >
               Escríbeme
             </a>
           </div>
+        </div>
+      </section>
+
+      {/* Contact Form Section */}
+      <section id="contacto" className="py-24 bg-[#FAF8F5] fade-section opacity-0 translate-y-8 transition-all duration-700">
+        <div className="max-w-2xl mx-auto px-6">
+          <div className="text-center space-y-6 mb-12">
+            <p className="text-[#8B7355] font-medium tracking-widest uppercase text-sm">Contacto</p>
+            <h2 className="section-title text-3xl md:text-4xl lg:text-5xl text-[#2D2D2D]">
+              ¿Tienes alguna pregunta?
+            </h2>
+            <p className="text-[#5C5C5C] leading-relaxed max-w-md mx-auto">
+              Si tienes dudas sobre los servicios o necesitas más información, escríbeme y te responderé lo antes posible.
+            </p>
+          </div>
+          
+          <ContactForm />
         </div>
       </section>
 
@@ -556,6 +573,143 @@ const ServiceCard = ({
         {ctaText}
       </a>
     </div>
+  );
+};
+
+const ContactForm = () => {
+  const [formData, setFormData] = useState({
+    nombre: '',
+    email: '',
+    asunto: '',
+    mensaje: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    const subject = formData.asunto 
+      ? `Contacto Astrochiic: ${formData.asunto}` 
+      : 'Contacto desde la web de Astrochiic';
+    
+    const body = `Nombre: ${formData.nombre}%0D%0AEmail: ${formData.email}%0D%0A%0D%0AMensaje:%0D%0A${formData.mensaje}`;
+    
+    window.location.href = `mailto:astrochiic@gmail.com?subject=${encodeURIComponent(subject)}&body=${body}`;
+    
+    setTimeout(() => {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      setTimeout(() => setSubmitted(false), 4000);
+    }, 1000);
+  };
+
+  const inputClasses = "w-full px-5 py-4 bg-white border border-[#E8E4DE] rounded-xl text-[#3D3D3D] placeholder-[#A8A8A8] focus:outline-none focus:border-[#8B7355] focus:ring-2 focus:ring-[#8B7355]/10 transition-all";
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-5">
+      <div className="grid md:grid-cols-2 gap-5">
+        <div>
+          <label htmlFor="nombre" className="block text-sm font-medium text-[#5C5C5C] mb-2">
+            Nombre *
+          </label>
+          <input
+            type="text"
+            id="nombre"
+            required
+            placeholder="Tu nombre"
+            value={formData.nombre}
+            onChange={(e) => setFormData({...formData, nombre: e.target.value})}
+            className={inputClasses}
+          />
+        </div>
+        <div>
+          <label htmlFor="email" className="block text-sm font-medium text-[#5C5C5C] mb-2">
+            Email *
+          </label>
+          <input
+            type="email"
+            id="email"
+            required
+            placeholder="tu@email.com"
+            value={formData.email}
+            onChange={(e) => setFormData({...formData, email: e.target.value})}
+            className={inputClasses}
+          />
+        </div>
+      </div>
+      
+      <div>
+        <label htmlFor="asunto" className="block text-sm font-medium text-[#5C5C5C] mb-2">
+          Asunto <span className="text-[#A8A8A8] font-normal">(opcional)</span>
+        </label>
+        <select
+          id="asunto"
+          value={formData.asunto}
+          onChange={(e) => setFormData({...formData, asunto: e.target.value})}
+          className={`${inputClasses} appearance-none cursor-pointer`}
+          style={{backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%238B7355' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e")`, backgroundPosition: 'right 1rem center', backgroundRepeat: 'no-repeat', backgroundSize: '1.5em 1.5em'}}
+        >
+          <option value="">Selecciona un tema...</option>
+          <option value="Informe Astrológico">Informe Astrológico Escrito</option>
+          <option value="Sesión Online 60min">Sesión Online (60 min)</option>
+          <option value="Pack 2 Informes">Pack de 2 Informes</option>
+          <option value="Sesión 2 Cartas">Sesión Online de Dos Cartas</option>
+          <option value="Consulta general">Consulta general</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+      
+      <div>
+        <label htmlFor="mensaje" className="block text-sm font-medium text-[#5C5C5C] mb-2">
+          Mensaje *
+        </label>
+        <textarea
+          id="mensaje"
+          required
+          rows={5}
+          placeholder="Cuéntame en qué puedo ayudarte..."
+          value={formData.mensaje}
+          onChange={(e) => setFormData({...formData, mensaje: e.target.value})}
+          className={`${inputClasses} resize-none`}
+        />
+      </div>
+      
+      <button
+        type="submit"
+        disabled={isSubmitting}
+        className="w-full px-8 py-4 bg-[#8B7355] text-white font-medium rounded-full hover:bg-[#7A6349] transition-all hover:shadow-lg disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+      >
+        {isSubmitting ? (
+          <>
+            <svg className="animate-spin w-5 h-5" fill="none" viewBox="0 0 24 24">
+              <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+              <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+            Abriendo correo...
+          </>
+        ) : submitted ? (
+          <>
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            </svg>
+            ¡Listo!
+          </>
+        ) : (
+          <>
+            Enviar mensaje
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </>
+        )}
+      </button>
+      
+      <p className="text-center text-sm text-[#9E9E9E]">
+        Al enviar se abrirá tu cliente de correo con el mensaje preparado.
+      </p>
+    </form>
   );
 };
 
