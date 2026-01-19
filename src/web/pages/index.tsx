@@ -188,7 +188,6 @@ const Index = () => {
 
       {/* Enfoque Section */}
       <section id="enfoque" className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#F8F4ED]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F8F4ED] via-[#F6F1E9] to-[#F8F4ED]"></div>
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
             <p className="text-[#B8956B] font-medium tracking-[0.25em] uppercase text-xs sm:text-sm">Mi enfoque</p>
@@ -241,7 +240,7 @@ const Index = () => {
       </section>
 
       {/* Para quién es / No es - REDESIGNED */}
-      <section className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#F2EDE4]">
+      <section className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#FDFBF7]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
             <p className="text-[#B8956B] font-medium tracking-[0.25em] uppercase text-xs sm:text-sm">¿Es para ti?</p>
@@ -315,8 +314,7 @@ const Index = () => {
       </section>
 
       {/* Servicios */}
-      <section id="servicios" className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#FFFFFF]">
-        <div className="absolute inset-0 bg-[#FFFFFF]"></div>
+      <section id="servicios" className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#F8F4ED]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
             <p className="text-[#B8956B] font-medium tracking-[0.25em] uppercase text-xs sm:text-sm">Servicios</p>
@@ -408,7 +406,7 @@ const Index = () => {
       </section>
 
       {/* Testimonios */}
-      <section id="testimonios" className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#FAF6F0]">
+      <section id="testimonios" className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#FDFBF7]">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
             <p className="text-[#B8956B] font-medium tracking-[0.25em] uppercase text-xs sm:text-sm">Experiencias</p>
@@ -466,8 +464,7 @@ const Index = () => {
       </section>
 
       {/* Valores / Confianza */}
-      <section className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#F5F0E6]">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F5F0E6] via-[#F3EDE3] to-[#F5F0E6]"></div>
+      <section className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#F8F4ED]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center relative z-10">
           <p className="text-[#B8956B] font-medium tracking-[0.25em] uppercase text-xs sm:text-sm mb-4 sm:mb-6">Mi compromiso</p>
           <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2A2622] mb-6 sm:mb-8">
@@ -494,8 +491,7 @@ const Index = () => {
       </section>
 
       {/* CTA Final */}
-      <section className="py-16 sm:py-24 relative overflow-hidden fade-section opacity-0 translate-y-8 transition-all duration-700">
-        <div className="absolute inset-0 bg-[#FAF6F0]"></div>
+      <section className="py-16 sm:py-24 relative overflow-hidden fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#FDFBF7]">
         {/* Subtle decorative circles */}
         <div className="absolute inset-0">
           <div className="absolute top-10 left-1/4 w-64 h-64 border border-[#D4C5B0]/20 rounded-full"></div>
@@ -526,8 +522,7 @@ const Index = () => {
       </section>
 
       {/* Contact Form Section */}
-      <section id="contacto" className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700">
-        <div className="absolute inset-0 bg-gradient-to-b from-[#F8F3EA] via-[#F6F0E6] to-[#F4EFE3]"></div>
+      <section id="contacto" className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#FDFBF7]">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 relative z-10">
           <div className="text-center space-y-4 sm:space-y-6 mb-10 sm:mb-12">
             <p className="text-[#B8956B] font-medium tracking-[0.25em] uppercase text-xs sm:text-sm">Contacto</p>
@@ -544,7 +539,7 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="py-12 sm:py-16 bg-[#EFE9DF] border-t border-[#E5DFD4]">
+      <footer className="py-12 sm:py-16 bg-[#F8F4ED] border-t border-[#E8E0D4]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col items-center gap-6 sm:gap-8">
             <img 
