@@ -708,7 +708,7 @@ const ServiceCard = ({
       
       <div className="mb-5 sm:mb-7">
         <h3 className="font-semibold text-xl sm:text-2xl md:text-[1.65rem] text-[#2A2622] mb-2 pr-20 sm:pr-24 leading-tight tracking-tight">{title}</h3>
-        <p className="text-[#B8956B] font-medium text-xs sm:text-sm">{subtitle}</p>
+        <p className="text-[#B8956B] font-medium text-sm sm:text-base">{subtitle}</p>
       </div>
       
       <div className="flex items-baseline gap-2 sm:gap-3 mb-5 sm:mb-7 mt-1">
@@ -719,10 +719,10 @@ const ServiceCard = ({
       </div>
 
       {features.length > 0 && (
-        <ul className="space-y-2 sm:space-y-2.5 mb-4 sm:mb-6">
+        <ul className="space-y-2 sm:space-y-3 mb-4 sm:mb-6">
           {features.map((feature, i) => (
-            <li key={i} className="flex items-start gap-2 sm:gap-2.5 text-[#6B6259] text-xs sm:text-sm">
-              <svg className="w-3.5 sm:w-4 h-3.5 sm:h-4 text-[#B8956B] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <li key={i} className="flex items-start gap-2 sm:gap-3 text-[#6B6259] text-sm sm:text-base leading-relaxed">
+              <svg className="w-4 sm:w-5 h-4 sm:h-5 text-[#B8956B] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
               </svg>
               {feature}
@@ -735,10 +735,10 @@ const ServiceCard = ({
         <div className="mb-4 sm:mb-6">
           <button
             onClick={() => setShowTypes(!showTypes)}
-            className="flex items-center gap-2 text-xs sm:text-sm font-medium text-[#B8956B] hover:text-[#9A7A5A] transition-colors"
+            className="flex items-center gap-2 text-sm sm:text-base font-medium text-[#B8956B] hover:text-[#9A7A5A] transition-colors"
           >
             <svg 
-              className={`w-3.5 sm:w-4 h-3.5 sm:h-4 transition-transform ${showTypes ? 'rotate-180' : ''}`} 
+              className={`w-4 sm:w-5 h-4 sm:h-5 transition-transform ${showTypes ? 'rotate-180' : ''}`} 
               fill="none" 
               stroke="currentColor" 
               viewBox="0 0 24 24"
@@ -748,10 +748,10 @@ const ServiceCard = ({
             {typesLabel}
           </button>
           {showTypes && (
-            <ul className="mt-2 sm:mt-3 ml-5 sm:ml-6 space-y-1 sm:space-y-1.5">
+            <ul className="mt-3 sm:mt-4 ml-6 sm:ml-7 space-y-2 sm:space-y-2.5">
               {types.map((type, i) => (
-                <li key={i} className="text-xs sm:text-sm text-[#6B6259] flex items-center gap-2">
-                  <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-[#D4C5B0] rounded-full"></span>
+                <li key={i} className="text-sm sm:text-base text-[#6B6259] flex items-center gap-2.5 leading-relaxed">
+                  <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-[#D4C5B0] rounded-full flex-shrink-0"></span>
                   {type}
                 </li>
               ))}
@@ -761,12 +761,12 @@ const ServiceCard = ({
       )}
 
       {packs && (
-        <div className="mb-4 sm:mb-6 p-3 sm:p-4 bg-[#FAF6F0] rounded-xl border border-[#E8E0D4]">
-          <p className="text-[10px] sm:text-xs font-medium text-[#B8956B] uppercase tracking-wide mb-2 sm:mb-3">{packsLabel}</p>
-          <ul className="space-y-1.5 sm:space-y-2">
+        <div className="mb-4 sm:mb-6 p-4 sm:p-5 bg-[#FAF6F0] rounded-xl border border-[#E8E0D4]">
+          <p className="text-xs sm:text-sm font-medium text-[#B8956B] uppercase tracking-wide mb-3 sm:mb-4">{packsLabel}</p>
+          <ul className="space-y-2 sm:space-y-2.5">
             {packs.map((pack, i) => (
-              <li key={i} className="text-xs sm:text-sm text-[#6B6259] flex items-center gap-2">
-                <span className="w-1 sm:w-1.5 h-1 sm:h-1.5 bg-[#B8956B] rounded-full"></span>
+              <li key={i} className="text-sm sm:text-base text-[#6B6259] flex items-center gap-2.5 leading-relaxed">
+                <span className="w-1.5 sm:w-2 h-1.5 sm:h-2 bg-[#B8956B] rounded-full flex-shrink-0"></span>
                 {pack}
               </li>
             ))}
