@@ -127,14 +127,59 @@ const Index = () => {
             </div>
             <div className="order-1 lg:order-2 flex justify-center animate-fade-up animation-delay-200">
               <div className="relative">
-                {/* Elegant geometric frame */}
-                <div className="absolute -inset-4 border border-[#D4C5B0]/40 rounded-[2rem]"></div>
-                <div className="absolute -inset-8 border border-[#D4C5B0]/20 rounded-[2.5rem]"></div>
+                {/* Distinctive asymmetric organic frame with orbital elements */}
+                {/* Outer orbital ring - tilted ellipse */}
+                <div className="absolute -inset-10 sm:-inset-12 border border-[#D4C5B0]/25 rounded-full" style={{ transform: 'rotate(-15deg) scaleX(1.15)' }}></div>
+                
+                {/* Inner orbital ring - counter tilted */}
+                <div className="absolute -inset-6 sm:-inset-8 border border-[#B8956B]/20 rounded-full" style={{ transform: 'rotate(25deg) scaleY(1.1)' }}></div>
+                
+                {/* Small orbital dot accents */}
+                <div className="absolute -top-4 right-1/4 w-2 h-2 rounded-full bg-[#B8956B]/40"></div>
+                <div className="absolute -bottom-6 left-1/3 w-1.5 h-1.5 rounded-full bg-[#D4C5B0]/60"></div>
+                <div className="absolute top-1/4 -right-6 w-2.5 h-2.5 rounded-full bg-[#B8956B]/30"></div>
+                
+                {/* Asymmetric organic blob shape behind image */}
+                <div 
+                  className="absolute inset-0 bg-gradient-to-br from-[#F5EDE4] via-[#EDE4D8] to-[#E8DDD0]"
+                  style={{ 
+                    borderRadius: '60% 40% 50% 70% / 55% 65% 45% 55%',
+                    transform: 'scale(1.08) translate(-2%, 3%)',
+                  }}
+                ></div>
+                
+                {/* Accent line - like an astral chart arc */}
+                <svg className="absolute -inset-8 sm:-inset-10 w-[calc(100%+4rem)] sm:w-[calc(100%+5rem)] h-[calc(100%+4rem)] sm:h-[calc(100%+5rem)]" viewBox="0 0 100 100" fill="none">
+                  <path 
+                    d="M 15 50 Q 25 15, 60 10" 
+                    stroke="#B8956B" 
+                    strokeWidth="0.4" 
+                    strokeOpacity="0.4"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                  <path 
+                    d="M 85 55 Q 80 85, 45 92" 
+                    stroke="#D4C5B0" 
+                    strokeWidth="0.5" 
+                    strokeOpacity="0.35"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+                
                 <img 
                   src="./0a8590cc-7ac8-4dc7-8454-e879f7fdfbbe.png" 
                   alt="Astrochiic - Astrología Evolutiva"
-                  className="relative w-56 sm:w-72 md:w-80 lg:w-96 rounded-[1.5rem] shadow-xl shadow-[#D4C5B0]/20"
+                  className="relative w-56 sm:w-72 md:w-80 lg:w-96 shadow-2xl shadow-[#C4B5A0]/30"
+                  style={{ 
+                    borderRadius: '55% 45% 48% 52% / 50% 55% 45% 50%',
+                    clipPath: 'polygon(5% 0%, 100% 0%, 100% 95%, 0% 100%, 0% 8%)'
+                  }}
                 />
+                
+                {/* Corner accent - golden line detail */}
+                <div className="absolute -bottom-2 -right-2 w-16 h-16 border-r-2 border-b-2 border-[#B8956B]/30 rounded-br-3xl"></div>
               </div>
             </div>
           </div>
