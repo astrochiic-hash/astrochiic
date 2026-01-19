@@ -521,6 +521,20 @@ const Index = () => {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#F8F4ED]">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 relative z-10">
+          <div className="text-center space-y-4 sm:space-y-6 mb-12 sm:mb-16">
+            <p className="text-[#B8956B] font-medium tracking-[0.25em] uppercase text-xs sm:text-sm">FAQ</p>
+            <h2 className="section-title text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-[#2A2622]">
+              Preguntas frecuentes
+            </h2>
+          </div>
+          
+          <FAQAccordion />
+        </div>
+      </section>
+
       {/* Contact Form Section */}
       <section id="contacto" className="py-16 sm:py-24 relative fade-section opacity-0 translate-y-8 transition-all duration-700 bg-[#FDFBF7]">
         <div className="max-w-2xl mx-auto px-4 sm:px-6 relative z-10">
@@ -786,6 +800,88 @@ const ServiceCard = ({
       >
         {ctaText}
       </a>
+    </div>
+  );
+};
+
+const FAQAccordion = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const faqs = [
+    {
+      question: "¿Qué información necesitas para mi carta natal?",
+      answer: "Necesito tu fecha de nacimiento, hora exacta (la que aparece en tu partida de nacimiento) y lugar (ciudad y país). La hora es fundamental porque determina tu Ascendente y la posición de las casas astrológicas. Si no la tienes exacta, podemos trabajar con una aproximación, aunque el análisis será menos preciso en ciertos aspectos."
+    },
+    {
+      question: "¿Cuánto tarda en llegar mi informe?",
+      answer: "Los informes escritos se entregan en 48 horas hábiles tras recibir tus datos y confirmar el pago. Trabajo cada carta de forma personalizada, no son informes automáticos. Para las sesiones online, agendamos día y hora que te convenga, normalmente con una semana de antelación."
+    },
+    {
+      question: "¿En qué se diferencia de un horóscopo?",
+      answer: "Un horóscopo generalista habla de signos solares (solo donde estaba el Sol al nacer). Tu carta natal es un mapa completo y único: incluye la Luna, los planetas, el Ascendente, las casas y los aspectos entre ellos. Es como la diferencia entre leer tu signo en una revista y tener un estudio psicológico profundo de tu personalidad, patrones y potencial."
+    },
+    {
+      question: "¿Necesito conocimientos previos de astrología?",
+      answer: "No, para nada. Escribo y hablo en un lenguaje claro, cercano y humano. Evito el exceso de tecnicismos y, cuando uso algún término astrológico, lo explico. Mi enfoque es que entiendas tu carta y puedas aplicarla a tu vida, no que memorices conceptos abstractos."
+    },
+    {
+      question: "¿Qué pasa si no sé mi hora exacta de nacimiento?",
+      answer: "Podemos trabajar igualmente, pero con limitaciones. Sin hora exacta no puedo calcular tu Ascendente ni la posición de las casas, que son fundamentales. Te recomiendo intentar conseguirla (partida de nacimiento, registros hospitalarios, o preguntando a familia). Si es imposible, nos centramos en los planetas y sus aspectos, que siguen siendo muy reveladores."
+    },
+    {
+      question: "¿Las sesiones online se graban?",
+      answer: "Sí, todas las sesiones por videollamada quedan grabadas y te las envío después. Así puedes revisarlas tantas veces como necesites, tomar notas con calma o volver a escuchar algo que en el momento no captaste del todo. La grabación es solo para ti."
+    },
+    {
+      question: "¿Puedo hacer preguntas después del informe?",
+      answer: "Por supuesto. Puedes escribirme por email para dudas puntuales. Si necesitas profundizar o trabajar algo que surgió tras leer el informe, te recomiendo reservar una sesión online donde podemos conversar en directo y explorar lo que necesites con más detalle."
+    },
+    {
+      question: "¿Cómo funciona el pago?",
+      answer: "El pago es 100% seguro a través de Stripe. Al hacer clic en 'Reservar' o 'Comprar', te lleva a una pasarela de pago segura. Una vez completado, recibes un email de confirmación automático. Para informes, te contacto en las siguientes 24h para pedirte tus datos de nacimiento. Para sesiones, coordinamos fecha y hora por email."
+    }
+  ];
+
+  return (
+    <div className="space-y-3">
+      {faqs.map((faq, index) => {
+        const isOpen = openIndex === index;
+        const bgColor = index % 2 === 0 ? "bg-[#FDFBF7]" : "bg-white";
+        
+        return (
+          <div 
+            key={index} 
+            className={`${bgColor} rounded-2xl border border-[#E8E0D4] overflow-hidden transition-all duration-300 ${isOpen ? 'shadow-md shadow-[#D4C5B0]/10' : ''}`}
+          >
+            <button
+              onClick={() => setOpenIndex(isOpen ? null : index)}
+              className="w-full px-5 sm:px-6 py-4 sm:py-5 flex items-center justify-between text-left gap-4 group"
+              aria-expanded={isOpen}
+            >
+              <span className="font-medium text-[#2A2622] text-sm sm:text-base group-hover:text-[#B8956B] transition-colors">
+                {faq.question}
+              </span>
+              <span className={`flex-shrink-0 w-6 h-6 rounded-full border border-[#D4C5B0] flex items-center justify-center transition-all duration-300 ${isOpen ? 'bg-[#B8956B] border-[#B8956B] rotate-0' : 'bg-transparent rotate-0'}`}>
+                <svg 
+                  className={`w-3 h-3 transition-transform duration-300 ${isOpen ? 'text-white rotate-45' : 'text-[#B8956B] rotate-0'}`} 
+                  fill="none" 
+                  stroke="currentColor" 
+                  viewBox="0 0 24 24"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+                </svg>
+              </span>
+            </button>
+            <div 
+              className={`overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+            >
+              <p className="px-5 sm:px-6 pb-5 sm:pb-6 text-[#6B6259] leading-relaxed text-sm sm:text-base">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        );
+      })}
     </div>
   );
 };
