@@ -1,0 +1,125 @@
+# 📋 GUÍA PASO A PASO: DESPLEGAR EN VERCEL
+
+## 🎯 YA ESTÁS EN VERCEL - SIGUE ESTOS PASOS:
+
+### **PASO 1: Importar el proyecto**
+1. En Vercel, busca el botón **"Add New..."** (arriba derecha)
+2. Selecciona **"Project"**
+3. Clic en **"Continue with GitHub"** o **"Deploy with Git"**
+
+### **PASO 2: Si te pide conectar GitHub (opcional pero recomendado)**
+- Clic en **"Import Git Repository"**
+- Conecta tu cuenta de GitHub
+- Autoriza Vercel
+
+**O usa la opción rápida:**
+- Busca **"Deploy from template"** o **"Import from CLI"**
+- O arrastra la carpeta directamente (algunos planes)
+
+### **PASO 3: Configuración del proyecto**
+Cuando Vercel te pida configurar:
+
+**Framework Preset:** Vite
+**Build Command:** `npm run build`
+**Output Directory:** `dist/client`
+**Install Command:** `npm install`
+
+### **PASO 4: Deploy**
+1. Clic en **"Deploy"**
+2. Espera 2-3 minutos mientras Vercel construye tu web
+3. ✅ Te dará una URL tipo: `https://astrochiic-xyz123.vercel.app`
+
+---
+
+## 🌐 CONECTAR TU DOMINIO www.astrochiic.com
+
+### **PASO 5: Añadir dominio en Vercel**
+1. En tu proyecto desplegado, ve a **"Settings"**
+2. Clic en **"Domains"** (menú izquierdo)
+3. Escribe: `www.astrochiic.com`
+4. Clic en **"Add"**
+5. También añade: `astrochiic.com` (sin www)
+
+### **PASO 6: Vercel te mostrará los DNS**
+Vercel te dirá algo como:
+
+```
+Para www.astrochiic.com:
+Tipo: CNAME
+Nombre: www
+Valor: cname.vercel-dns.com
+
+Para astrochiic.com:
+Tipo: A
+Nombre: @
+Valor: 76.76.21.21
+```
+
+**⚠️ COPIA ESTOS VALORES** (los verás en pantalla)
+
+---
+
+## 🔧 CONFIGURAR DNS EN WORDPRESS.COM
+
+### **PASO 7: Ir a WordPress.com**
+1. Inicia sesión en **WordPress.com**
+2. Ve a **"Mis sitios"** → **"Configuración"** → **"Dominios"**
+3. Selecciona **astrochiic.com**
+4. Busca **"Servidores de nombres y DNS"** o **"DNS Records"**
+
+### **PASO 8: Añadir registros DNS**
+Clic en **"Agregar nuevo registro"** y añade:
+
+**Registro 1:**
+- Tipo: `CNAME`
+- Nombre/Host: `www`
+- Destino/Valor: `cname.vercel-dns.com`
+- TTL: Automático o 3600
+
+**Registro 2:**
+- Tipo: `A`
+- Nombre/Host: `@` (o dejar vacío)
+- Destino/Valor: `76.76.21.21`
+- TTL: Automático o 3600
+
+### **PASO 9: Guardar y esperar**
+1. Clic en **"Guardar cambios"**
+2. ⏱️ Espera **10 minutos - 48 horas** (normalmente 1-2 horas)
+3. Vercel te enviará un email cuando esté listo
+
+---
+
+## ✅ VERIFICAR QUE FUNCIONA
+
+1. Abre **www.astrochiic.com** en modo incógnito
+2. Si ves tu landing → ¡LISTO! 🎉
+3. Si no funciona aún → espera un poco más, la propagación DNS toma tiempo
+
+---
+
+## 📦 ARCHIVOS PARA DESPLEGAR
+
+He preparado: **astrochiic-website.zip**
+- Descárgalo desde: `/home/user/astrochiic-website.zip`
+- Descomprímelo en tu ordenador
+- Úsalo si Vercel te pide subir archivos manualmente
+
+---
+
+## 🆘 ¿PROBLEMAS?
+
+**"No encuentro donde añadir DNS en WordPress.com":**
+- Busca "Name servers", "DNS", "Advanced DNS"
+- O contacta soporte de WordPress.com
+
+**"Vercel me da error al construir":**
+- Avísame y lo revisamos juntos
+
+**"El dominio no funciona después de 24h":**
+- Verifica que los DNS estén bien escritos
+- Usa https://dnschecker.org para verificar propagación
+
+---
+
+## 📞 CONTACTO
+Si tienes dudas durante el proceso, dime en qué paso estás y te ayudo.
