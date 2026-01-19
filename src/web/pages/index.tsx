@@ -33,7 +33,7 @@ const Index = () => {
       <nav className="fixed top-0 left-0 right-0 z-50 bg-[#FDFBF7]/90 backdrop-blur-xl border-b border-[#E8E0D4]/60">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
           <img 
-            src="./4c55c15c-6d47-4b31-b910-b68c92218597.png" 
+            src="./logo-navbar.png" 
             alt="Astrochic - Astrología Evolutiva" 
             className="h-8 sm:h-11 md:h-14 lg:h-16 w-auto"
           />
@@ -502,7 +502,7 @@ const Index = () => {
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col items-center gap-6 sm:gap-8">
             <img 
-              src="./4c55c15c-6d47-4b31-b910-b68c92218597.png" 
+              src="./logo-navbar.png" 
               alt="Astrochic - Astrología Evolutiva" 
               className="h-12 sm:h-14 w-auto opacity-80"
             />
