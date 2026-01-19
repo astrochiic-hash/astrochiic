@@ -107,7 +107,7 @@ const Index = () => {
                   La carta natal es el <span className="italic font-normal text-[#B8956B]">mapa</span> de tu vida
                 </h1>
                 <p className="text-base sm:text-lg md:text-xl text-[#6B6259] leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  Tu carta natal no te dice lo que va a pasar. Te muestra quién eres, qué necesitas y por qué repites ciertos patrones.
+                  A través de tu carta natal y el momento actual, identificamos patrones, necesidades emocionales y dirección vital con una mirada profunda y práctica.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start">
